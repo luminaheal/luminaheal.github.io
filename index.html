@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>光之疗愈 · 灵摆疗愈与能量调频</title>
+    <!-- 引入極輕量的繁簡轉換 JS 庫 -->
+    <script src="https://cdn.jsdelivr.net/npm/opencc-js@1.0.5/dist/umd/cn2t.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/opencc-js@1.0.5/dist/umd/t2cn.js"></script>
     <style>
         :root {
             --primary-color: #8A73B9;
@@ -59,17 +62,6 @@
             background: var(--primary-color);
             color: #FFFFFF;
         }
-
-        /* 預設隱藏繁體版，只顯示簡體版 */
-        .lang-tw { display: none; }
-        .lang-cn { display: inline; }
-        /* 當 body 擁有 tw-mode 時，切換顯示繁體，隱藏簡體 */
-        body.tw-mode .lang-cn { display: none; }
-        body.tw-mode .lang-tw { display: inline; }
-        /* 區塊級元素的顯示控制 */
-        div.lang-tw, p.lang-tw, h1.lang-tw, h2.lang-tw, h3.lang-tw, li.lang-tw { display: none; }
-        body.tw-mode div.lang-cn, body.tw-mode p.lang-cn, body.tw-mode h1.lang-cn, body.tw-mode h2.lang-cn, body.tw-mode h3.lang-cn, body.tw-mode li.lang-cn { display: none; }
-        body.tw-mode div.lang-tw, body.tw-mode p.lang-tw, body.tw-mode h1.lang-tw, body.tw-mode h2.lang-tw, body.tw-mode h3.lang-tw, body.tw-mode li.lang-tw { display: block; }
 
         /* Header / Banner */
         .hero {
@@ -258,258 +250,176 @@
 
     <!-- Hero Banner -->
     <div class="hero">
-        <h1 class="lang-cn">光之疗愈</h1>
-        <h1 class="lang-tw">光之療癒</h1>
-        <p class="lang-cn">寻回内心的和谐与平衡 · 灵摆疗愈与能量调频</p>
-        <p class="lang-tw">尋回內心的和諧與平衡 · 靈擺療癒與能量調頻</p>
+        <h1>光之疗愈</h1>
+        <p>寻回内心的和谐与平衡 · 灵摆疗愈与能量调频</p>
     </div>
 
     <!-- About Practitioner -->
     <div class="card">
-        <h2>
-            <span class="lang-cn">🕊️ 关于疗愈师</span>
-            <span class="lang-tw">🕊️ 關於療癒師</span>
-        </h2>
-        <span class="tag">
-            <span class="lang-cn">秘鲁神学协会 (ATP) 专业认证</span>
-            <span class="lang-tw">秘魯神學協會 (ATP) 專業認證</span>
-        </span>
-        <p class="lang-cn">你好，欢迎来到「光之疗愈」。</p>
-        <p class="lang-tw">你好，歡迎來到「光之療癒」。</p>
-        <p class="lang-cn">我持有秘鲁神学协会 (ATP) 颁发的灵摆应用专家认证。在过去三年多的实践中，我通过灵摆疗愈与能量调频，持续协助自己、家人以及许多客户走过情绪的低谷状态，亲眼见证了负面能量的清理、情绪的稳定与意识能量层级的提升。</p>
-        <p class="lang-tw">我持有秘魯神學協會 (ATP) 頒發的靈擺應用專家認證。在過去三年多的實踐中，我透過靈擺療癒與能量調頻，持續協助自己、家人以及許多客戶走過情緒的低谷狀態，親眼見證了負面能量的清理、情緒的穩定與意識能量層級的提升。</p>
+        <h2>🕊️ 关于疗愈师</h2>
+        <span class="tag">秘鲁神学协会 (ATP) 专业认证</span>
+        <p>你好，欢迎来到「光之疗愈」。</p>
+        <p>我持有秘鲁神学协会 (ATP) 颁发的灵摆应用专家认证。在过去三年多的实践中，我通过灵摆疗愈与能量调频，持续协助自己、家人以及许多客户走过情绪的低谷状态，亲眼见证了负面能量的清理、情绪的稳定与意识能量层级的提升。</p>
         <br>
-        <p class="lang-cn">如果你目前正面临情绪或内在的困扰，欢迎来到这里。我会通过专业的灵摆疗愈，陪伴并协助你的身心灵恢复和谐与平衡。</p>
-        <p class="lang-tw">如果你目前正面臨情緒或內在的困擾，歡迎來到這裡。我會透過專業的靈擺療癒，陪伴並協助你的身心靈恢復和諧與平衡。</p>
+        <p>如果你目前正面临情绪或内在的困扰，欢迎来到这里。我会通过专业的灵摆疗愈，陪伴并协助你的身心灵恢复和谐与平衡。</p>
     </div>
 
     <!-- About Pendulum -->
     <div class="card">
-        <h2>
-            <span class="lang-cn">✨ 什么是灵摆疗愈与调频？</span>
-            <span class="lang-tw">✨ 什麼是靈擺療癒與調頻？</span>
-        </h2>
-        <p class="lang-cn">宇宙万物皆由能量与频率组成。当我们在生活中面对压力、负面情绪或心结时，自身的能量场可能会产生阻塞与失衡。</p>
-        <p class="lang-tw">宇宙萬物皆由能量與頻率組成。當我們在生活中面對壓力、負面情緒或心結時，自身的能量場可能會產生阻塞與失衡。</p>
+        <h2>✨ 什么是灵摆疗愈与调频？</h2>
+        <p>宇宙万物皆由能量与频率组成。当我们在生活中面对压力、负面情绪或心结时，自身的能量场可能会产生阻塞与失衡。</p>
         <br>
-        <p class="lang-cn"><strong>灵摆疗愈与调频</strong>，是一种系统化的能量梳理与微调工具。疗愈师通过灵摆链接高我能量，针对个案当前的状态下达精准指令，协助释放沉积的负面念头、情绪压力与能量卡点。</p>
-        <p class="lang-tw"><strong>靈擺療癒與調頻</strong>，是一種系統化的能量梳理與微調工具。療癒師透過靈擺鏈接高我能量，針對個案當前的狀態下達精準指令，協助釋放沉積的負面念頭、情緒壓力與能量卡點。</p>
+        <p><strong>灵摆疗愈与调频</strong>，是一种系统化的能量梳理与微调工具。疗愈师通过灵摆链接高我能量，针对个案当前的状态下达精准指令，协助释放沉积的负面念头、情绪压力与能量卡点。</p>
         <br>
-        <p class="lang-cn">这个过程就像为你的身心进行一次深度的「能量保养」——通过多项深层清理与针对不同生活面向（如情绪、事业、人际或状态）的频率调整，帮助你的能量场恢复顺畅循环，重拾内心的平静、清晰与充沛活力。</p>
-        <p class="lang-tw">這個過程就像為你的身心進行一次深度的「能量保養」——透過多項深層清理與針對不同生活面向（如情緒、事業、人際或狀態）的頻率調整，幫助你的能量場恢復順暢循環，重拾內心的平靜、清晰與充沛活力。</p>
+        <p>这个过程就像为你的身心进行一次深度的「能量保养」——通过多项深层清理与针对不同生活面向（如情绪、事业、人际或状态）的频率调整，帮助你的能量场恢复顺畅循环，重拾内心的平静、清晰与充沛活力。</p>
     </div>
 
     <!-- Suitable for -->
     <div class="card">
-        <h2>
-            <span class="lang-cn">🌿 适合这样的你</span>
-            <span class="lang-tw">🌿 適合這樣的你</span>
-        </h2>
+        <h2>🌿 适合这样的你</h2>
         <ul class="service-list">
-            <li>
-                <span class="lang-cn">长期感到情绪低落、焦虑或内耗</span>
-                <span class="lang-tw">長期感到情緒低落、焦慮或內耗</span>
-            </li>
-            <li>
-                <span class="lang-cn">觉得生活、工作或人际关系卡卡不顺</span>
-                <span class="lang-tw">覺得生活、工作或人際關係卡卡不順</span>
-            </li>
-            <li>
-                <span class="lang-cn">希望清理环境或个人的负面不和谐气场</span>
-                <span class="lang-tw">希望清理環境或個人的負面不和諧氣場</span>
-            </li>
-            <li>
-                <span class="lang-cn">想提升意识能量层级，维持身心灵平衡</span>
-                <span class="lang-tw">想提升意識能量層級，維持身心靈平衡</span>
-            </li>
+            <li>长期感到情绪低落、焦虑或内耗</li>
+            <li>觉得生活、工作或人际关系卡卡不顺</li>
+            <li>希望清理环境或个人的负面不和谐气场</li>
+            <li>想提升意识能量层级，维持身心灵平衡</li>
         </ul>
     </div>
 
     <!-- Services -->
     <div class="card">
-        <h2>
-            <span class="lang-cn">🔮 服务内容</span>
-            <span class="lang-tw">🔮 服務內容</span>
-        </h2>
-        <h3 class="lang-cn" style="font-size: 1rem; color: var(--primary-color); margin: 10px 0;">1. 灵摆疗愈（包含 30 余项深度清理）</h3>
-        <h3 class="lang-tw" style="font-size: 1rem; color: var(--primary-color); margin: 10px 0;">1. 靈擺療愈（包含 30 餘項深度清理）</h3>
+        <h2>🔮 服务内容</h2>
+        <h3 style="font-size: 1rem; color: var(--primary-color); margin: 10px 0;">1. 灵摆疗愈（包含 30 余项深度清理）</h3>
         <ul class="service-list">
-            <li>
-                <span class="lang-cn">提升意识能量层级、减轻内心压力</span>
-                <span class="lang-tw">提升意識能量層級、減輕內心壓力</span>
-            </li>
-            <li>
-                <span class="lang-cn">清理负面能量、不和谐气场与经络阻塞</span>
-                <span class="lang-tw">清理負面能量、不和諧氣場與經絡阻塞</span>
-            </li>
-            <li>
-                <span class="lang-cn">下载草药、精油、水晶等天然滋养频率</span>
-                <span class="lang-tw">下載草藥、精油、水晶等天然滋養頻率</span>
-            </li>
+            <li>提升意识能量层级、减轻内心压力</li>
+            <li>清理负面能量、不和谐气场与经络阻塞</li>
+            <li>下载草药、精油、水晶等天然滋养频率</li>
         </ul>
 
-        <h3 class="lang-cn" style="font-size: 1rem; color: var(--primary-color); margin: 15px 0 10px 0;">2. 专属灵摆调频</h3>
-        <h3 class="lang-tw" style="font-size: 1rem; color: var(--primary-color); margin: 15px 0 10px 0;">2. 專屬靈擺調頻</h3>
+        <h3 style="font-size: 1rem; color: var(--primary-color); margin: 15px 0 10px 0;">2. 专属灵摆调频</h3>
         <ul class="service-list">
-            <li>
-                <span class="lang-cn"><b>个人与心灵：</b>个人能量、学习、考试调频</span>
-                <span class="lang-tw"><b>個人與心靈：</b>個人能量、學習、考試調頻</span>
-            </li>
-            <li>
-                <span class="lang-cn"><b>情感与关系：</b>桃花、爱情、家庭关系调频</span>
-                <span class="lang-tw"><b>情感與關係：</b>桃花、愛情、家庭關係調頻</span>
-            </li>
-            <li>
-                <span class="lang-cn"><b>事业与财富：</b>工作、事业、金钱能量调频</span>
-                <span class="lang-tw"><b>事業與財富：</b>工作、事業、金錢能量調頻</span>
-            </li>
+            <li><b>个人与心灵：</b>个人能量、学习、考试调频</li>
+            <li><b>情感与关系：</b>桃花、爱情、家庭关系调频</li>
+            <li><b>事业与财富：</b>工作、事业、金钱能量调频</li>
         </ul>
     </div>
 
     <!-- Pricing -->
     <div class="card">
-        <h2>
-            <span class="lang-cn">💰 服务收费</span>
-            <span class="lang-tw">💰 服務收費</span>
-        </h2>
+        <h2>💰 服务收费</h2>
         
         <div class="pricing-item">
-            <h3 class="lang-cn">1. 深度灵摆能量清理与疗愈</h3>
-            <h3 class="lang-tw">1. 深度靈擺能量清理與療癒</h3>
-            <div class="price-tag">
-                <span class="lang-cn">费用：RMB $388 / 次</span>
-                <span class="lang-tw">費用：RMB $388 / 次</span>
-            </div>
-            <p style="font-size: 0.9rem; color: #666;">
-                <span class="lang-cn"><b>服务包含：</b>针对潜意识与气场进行 30 余项深度清理，释放积累的负面情绪与能量阻塞，并附调频反馈。</span>
-                <span class="lang-tw"><b>服務包含：</b>針對潛意識與氣場進行 30 餘項深度清理，釋放積累的負面情緒與能量阻塞，並附調頻反饋。</span>
-            </p>
+            <h3>1. 深度灵摆能量清理与疗愈</h3>
+            <div class="price-tag">费用：RMB $388 / 次</div>
+            <p style="font-size: 0.9rem; color: #666;"><b>服务包含：</b>针对潜意识与气场进行 30 余项深度清理，释放积累的负面情绪与能量阻塞，并附调频反馈。</p>
         </div>
 
         <div class="pricing-item">
-            <h3 class="lang-cn">2. 专项能量调频（连续保养）</h3>
-            <h3 class="lang-tw">2. 專項能量調頻（連續保養）</h3>
-            <div class="price-tag">
-                <span class="lang-cn">单次调频：RMB $88 / 次</span>
-                <span class="lang-tw">單次調頻：RMB $88 / 次</span>
-            </div>
-            <div class="price-tag">
-                <span class="lang-cn">连续调频套餐：</span>
-                <span class="lang-tw">連續調頻套餐：</span>
-            </div>
+            <h3>2. 专项能量调频（连续保养）</h3>
+            <div class="price-tag">单次调频：RMB $88 / 次</div>
+            <div class="price-tag">连续调频套餐：</div>
             <ul class="service-list" style="margin-bottom: 8px;">
                 <li>RMB $288 / 3 次</li>
                 <li>RMB $388 / 5 次</li>
             </ul>
-            <p style="font-size: 0.9rem; color: #666;">
-                <span class="lang-cn"><b>适用方向：</b>个人能量场、工作事业、情感关系、学业或特定事件调频。</span>
-                <span class="lang-tw"><b>適用方向：</b>個人能量場、工作事業、情感關係、學業或特定事件調頻。</span>
-            </p>
+            <p style="font-size: 0.9rem; color: #666;"><b>适用方向：</b>个人能量场、工作事业、情感关系、学业或特定事件调频。</p>
         </div>
 
         <div style="font-size: 0.88rem; color: var(--light-text); background: #FAF8F5; padding: 12px; border-radius: 8px; margin-top: 15px;">
-            <p class="lang-cn"><b>【付款方式与说明】</b></p>
-            <p class="lang-tw"><b>【付款方式與說明】</b></p>
-            <p class="lang-cn">• <b>付款方式：</b>支持微信支付、支付宝、澳门本地银行转账 / MPay。</p>
-            <p class="lang-tw">• <b>付款方式：</b>支持微信支付、支付寶、澳門本地銀行轉帳 / MPay。</p>
-            <p class="lang-cn">• <b>预约流程：</b>请先私讯沟通确认调频方向与资料，确认付款后即为您安排能量排程。</p>
-            <p class="lang-tw">• <b>預約流程：</b>請先私訊溝通確認調頻方向與資料，確認付款後即為您安排能量排程。</p>
+            <p><b>【付款方式与说明】</b></p>
+            <p>• <b>付款方式：</b>支持微信支付、支付宝、澳门本地银行转账 / MPay。</p>
+            <p>• <b>预约流程：</b>请先私讯沟通确认调频方向与资料，确认付款后即为您安排能量排程。</p>
         </div>
     </div>
 
     <!-- FAQ -->
     <div class="card">
-        <h2>
-            <span class="lang-cn">❓ 常见问题</span>
-            <span class="lang-tw">❓ 常見問題</span>
-        </h2>
+        <h2>❓ 常见问题</h2>
         <div class="faq-item">
-            <div class="faq-q">
-                <span class="lang-cn">Q: 疗愈与调频一定要我本人在场吗？远程真的有效吗？</span>
-                <span class="lang-tw">Q: 療癒與調頻一定要我本人在場嗎？遠程真的有效嗎？</span>
-            </div>
+            <div class="faq-q">Q: 疗愈与调频一定要我本人在场吗？远程真的有效吗？</div>
             <div class="faq-a">
-                <span class="lang-cn">
-                    答：不需要本人在场，远程进行效果是一样的。<br><br>
-                    这就像听收音机或使用手机通讯一样，虽然看不见电波，但只要「频道」对上了就能接收讯号。<br><br>
-                    在进行远程疗愈前，<b>您只需要提供姓名、出生年月日及近照（照片）</b>。这些资料就像是您专属的「能量频道指南」，协助疗愈师精准确立并连接您的能量场进行清理与微调。在约定的时间内，您只需放松心情、正常作息即可，完全不影响日常生活。
-                </span>
-                <span class="lang-tw">
-                    答：不需要本人在場，遠程進行效果是一樣的。<br><br>
-                    這就像聽收音機或使用手機通訊一樣，雖然看不見電波，但只要「頻道」對上了就能接收訊號。<br><br>
-                    在進行遠程療癒前，<b>您只需要提供姓名、出生年月日及近照（照片）</b>。這些資料就像是您專屬的「能量頻道指南」，協助療癒師精準確立並連接您的能量場進行清理與微調。在約定的時間內，您只需放鬆心情、正常作息即可，完全不影響日常生活。
-                </span>
+                答：不需要本人在场，远程进行效果是一样的。<br><br>
+                这就像听收音机或使用手机通讯一样，虽然看不见电波，但只要「频道」对上了就能接收讯号。<br><br>
+                在进行远程疗愈前，<b>您只需要提供姓名、出生年月日及近照（照片）</b>。这些资料就像是您专属的「能量频道指南」，协助疗愈师精准确立并连接您的能量场进行清理与微调。在约定的时间内，您只需放松心情、正常作息即可，完全不影响日常生活。
             </div>
         </div>
         <div class="faq-item">
-            <div class="faq-q">
-                <span class="lang-cn">Q: 疗愈和调频需要多久才能看到效果？</span>
-                <span class="lang-tw">Q: 療癒和調頻需要多久才能看到效果？</span>
-            </div>
-            <div class="faq-a">
-                <span class="lang-cn">答：能量的转变因人而异。若积累的负面能量或卡点较多，过程就像「打扫房间」一样，需要一步步清理与转化，可能会经历一段细微的「能量整合期」。许多客户反馈在疗愈后会感觉内心变得轻松、平静，或是原本卡住的事情顺利推进。请保持开放与平静的心态，让能量自然发挥作用。</span>
-                <span class="lang-tw">答：能量的轉變因人而異。若積累的負面能量或卡點較多，過程就像「打掃房間」一樣，需要一步步清理與轉化，可能會經歷一段細微的「能量整合期」。許多客戶反饋在療癒後會感覺內心變得輕鬆、平靜，或是原本卡住的事情順利推進。請保持開放與平靜的心態，讓能量自然發揮作用。</span>
-            </div>
+            <div class="faq-q">Q: 疗愈和调频需要多久才能看到效果？</div>
+            <div class="faq-a">答：能量的转变因人而异。若积累的负面能量或卡点较多，过程就像「打扫房间」一样，需要一步步清理与转化，可能会经历一段细微的「能量整合期」。许多客户反馈在疗愈后会感觉内心变得轻松、平静，或是原本卡住的事情顺利推进。请保持开放与平静的心态，让能量自然发挥作用。</div>
         </div>
     </div>
 </div>
 
 <!-- Bottom CTA Bar -->
 <div class="cta-bar">
-    <button class="btn-primary" onclick="openModal()">
-        <span class="lang-cn">联络疗愈师 · 私讯预约</span>
-        <span class="lang-tw">聯絡療癒師 · 私訊預約</span>
-    </button>
+    <button class="btn-primary" onclick="openModal()">联络疗愈师 · 私讯预约</button>
 </div>
 
 <!-- Contact Modal -->
 <div class="modal" id="contactModal">
     <div class="modal-content">
-        <h3 class="lang-cn">添加微信联系</h3>
-        <h3 class="lang-tw">添加微信聯繫</h3>
-        <p style="font-size: 0.85rem; color: #666; margin-top: 5px;">
-            <span class="lang-cn">请扫描二维码或私讯沟通</span>
-            <span class="lang-tw">請掃描二維碼或私訊溝通</span>
-        </p>
+        <h3>添加微信联系</h3>
+        <p style="font-size: 0.85rem; color: #666; margin-top: 5px;">请扫描二维码或私讯沟通</p>
 
+        <!-- 替换成你的微信二维码图片 -->
         <div class="qr-placeholder">
             [ 请在此放置微信二维码 ]
         </div>
 
-        <p>
-            <span class="lang-cn">微信号：<b>[你的微信号]</b></span>
-            <span class="lang-tw">微信號：<b>[你的微信號]</b></span>
-        </p>
+        <p>微信号：<b>[你的微信号]</b></p>
 
-        <button class="btn-primary" style="margin-top: 15px; padding: 8px 20px;" onclick="closeModal()">
-            <span class="lang-cn">关闭</span>
-            <span class="lang-tw">關閉</span>
-        </button>
+        <button class="btn-primary" style="margin-top: 15px; padding: 8px 20px;" onclick="closeModal()">关闭</button>
     </div>
 </div>
 
 <script>
-    // 預設為簡體字，讀取儲存的狀態
+    // 預設為簡體字 ('zh-CN')，點擊按鈕可切換為繁體字 ('zh-TW')
     let currentLang = localStorage.getItem('site_lang') || 'zh-CN';
+    let converterToTraditional = null;
+    let converterToSimplified = null;
 
     window.addEventListener('DOMContentLoaded', () => {
+        if (window.OpenCC) {
+            converterToTraditional = OpenCC.Converter({ from: 'cn', to: 'hk' });
+            converterToSimplified = OpenCC.Converter({ from: 'hk', to: 'cn' });
+        }
+        
         if (currentLang === 'zh-TW') {
-            document.body.classList.add('tw-mode');
-            document.getElementById('langToggleBtn').innerText = '简体中文';
+            applyLanguage('zh-TW');
         }
     });
 
     function toggleLanguage() {
-        if (currentLang === 'zh-CN') {
-            currentLang = 'zh-TW';
-            document.body.classList.add('tw-mode');
-            document.getElementById('langToggleBtn').innerText = '简体中文';
-        } else {
-            currentLang = 'zh-CN';
-            document.body.classList.remove('tw-mode');
-            document.getElementById('langToggleBtn').innerText = '繁體中文';
-        }
+        currentLang = (currentLang === 'zh-CN') ? 'zh-TW' : 'zh-CN';
         localStorage.setItem('site_lang', currentLang);
+        applyLanguage(currentLang);
+    }
+
+    function applyLanguage(lang) {
+        const btn = document.getElementById('langToggleBtn');
+        if (lang === 'zh-TW') {
+            btn.innerText = '简体中文';
+            convertNode(document.body, converterToTraditional);
+        } else {
+            btn.innerText = '繁體中文';
+            convertNode(document.body, converterToSimplified);
+        }
+    }
+
+    function convertNode(node, converter) {
+        if (!converter) return;
+        if (node.nodeType === Node.TEXT_NODE) {
+            // 跳過 script 與 style 內的文字
+            if (node.parentNode && (node.parentNode.tagName === 'SCRIPT' || node.parentNode.tagName === 'STYLE')) {
+                return;
+            }
+            node.nodeValue = converter(node.nodeValue);
+        } else {
+            // 不轉換切換按鈕本身的文字（因為按鈕文字是手動控制的提示）
+            if (node.id === 'langToggleBtn') return;
+            for (let child of node.childNodes) {
+                convertNode(child, converter);
+            }
+        }
     }
 
     function openModal() {
