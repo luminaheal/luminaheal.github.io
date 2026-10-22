@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>光之疗愈 · 灵摆疗愈与能量调频</title>
+    <!-- 引入極輕量的繁簡轉換 JS 庫 -->
+    <script src="https://cdn.jsdelivr.net/npm/opencc-js@1.0.5/dist/umd/cn2t.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/opencc-js@1.0.5/dist/umd/t2cn.js"></script>
     <style>
         :root {
             --primary-color: #8A73B9;
@@ -32,6 +35,32 @@
             max-width: 680px;
             margin: 0 auto;
             padding: 20px;
+            position: relative;
+        }
+
+        /* Lang Toggle Button in Top Right */
+        .lang-toggle-container {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 12px;
+        }
+
+        .lang-btn {
+            background: #FFFFFF;
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 6px rgba(138, 115, 185, 0.12);
+        }
+
+        .lang-btn:hover {
+            background: var(--primary-color);
+            color: #FFFFFF;
         }
 
         /* Header / Banner */
@@ -214,6 +243,11 @@
 <body>
 
 <div class="container">
+    <!-- 右上角 繁/簡 切換按鈕 -->
+    <div class="lang-toggle-container">
+        <button id="langToggleBtn" class="lang-btn" onclick="toggleLanguage()">繁體中文</button>
+    </div>
+
     <!-- Hero Banner -->
     <div class="hero">
         <h1>光之疗愈</h1>
@@ -338,6 +372,56 @@
 </div>
 
 <script>
+    // 預設為簡體字 ('zh-CN')，點擊按鈕可切換為繁體字 ('zh-TW')
+    let currentLang = localStorage.getItem('site_lang') || 'zh-CN';
+    let converterToTraditional = null;
+    let converterToSimplified = null;
+
+    window.addEventListener('DOMContentLoaded', () => {
+        if (window.OpenCC) {
+            converterToTraditional = OpenCC.Converter({ from: 'cn', to: 'hk' });
+            converterToSimplified = OpenCC.Converter({ from: 'hk', to: 'cn' });
+        }
+        
+        if (currentLang === 'zh-TW') {
+            applyLanguage('zh-TW');
+        }
+    });
+
+    function toggleLanguage() {
+        currentLang = (currentLang === 'zh-CN') ? 'zh-TW' : 'zh-CN';
+        localStorage.setItem('site_lang', currentLang);
+        applyLanguage(currentLang);
+    }
+
+    function applyLanguage(lang) {
+        const btn = document.getElementById('langToggleBtn');
+        if (lang === 'zh-TW') {
+            btn.innerText = '简体中文';
+            convertNode(document.body, converterToTraditional);
+        } else {
+            btn.innerText = '繁體中文';
+            convertNode(document.body, converterToSimplified);
+        }
+    }
+
+    function convertNode(node, converter) {
+        if (!converter) return;
+        if (node.nodeType === Node.TEXT_NODE) {
+            // 跳過 script 與 style 內的文字
+            if (node.parentNode && (node.parentNode.tagName === 'SCRIPT' || node.parentNode.tagName === 'STYLE')) {
+                return;
+            }
+            node.nodeValue = converter(node.nodeValue);
+        } else {
+            // 不轉換切換按鈕本身的文字（因為按鈕文字是手動控制的提示）
+            if (node.id === 'langToggleBtn') return;
+            for (let child of node.childNodes) {
+                convertNode(child, converter);
+            }
+        }
+    }
+
     function openModal() {
         document.getElementById('contactModal').style.display = 'flex';
     }
