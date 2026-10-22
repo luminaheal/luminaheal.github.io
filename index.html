@@ -63,9 +63,11 @@
         /* 預設隱藏繁體版，只顯示簡體版 */
         .lang-tw { display: none; }
         .lang-cn { display: inline; }
+        
         /* 當 body 擁有 tw-mode 時，切換顯示繁體，隱藏簡體 */
         body.tw-mode .lang-cn { display: none; }
         body.tw-mode .lang-tw { display: inline; }
+        
         /* 區塊級元素的顯示控制 */
         div.lang-tw, p.lang-tw, h1.lang-tw, h2.lang-tw, h3.lang-tw, li.lang-tw { display: none; }
         body.tw-mode div.lang-cn, body.tw-mode p.lang-cn, body.tw-mode h1.lang-cn, body.tw-mode h2.lang-cn, body.tw-mode h3.lang-cn, body.tw-mode li.lang-cn { display: none; }
@@ -274,13 +276,16 @@
             <span class="lang-cn">秘鲁神学协会 (ATP) 专业认证</span>
             <span class="lang-tw">秘魯神學協會 (ATP) 專業認證</span>
         </span>
+        
+        <!-- 簡體版段落 -->
         <p class="lang-cn">你好，欢迎来到「光之疗愈」。</p>
-        <p class="lang-tw">你好，歡迎來到「光之療癒」。</p>
         <p class="lang-cn">我持有秘鲁神学协会 (ATP) 颁发的灵摆应用专家认证。在过去三年多的实践中，我通过灵摆疗愈与能量调频，持续协助自己、家人以及许多客户走过情绪的低谷状态，亲眼见证了负面能量的清理、情绪的稳定与意识能量层级的提升。</p>
+        <p class="lang-cn"><br>如果你目前正面临情绪或内在的困扰，欢迎来到这里。我会通过专业的灵摆疗愈，陪伴并协助你的身心灵恢复和谐与平衡。</p>
+
+        <!-- 繁體版段落 -->
+        <p class="lang-tw">你好，歡迎來到「光之療癒」。</p>
         <p class="lang-tw">我持有秘魯神學協會 (ATP) 頒發的靈擺應用專家認證。在過去三年多的實踐中，我透過靈擺療癒與能量調頻，持續協助自己、家人以及許多客戶走過情緒的低谷狀態，親眼見證了負面能量的清理、情緒的穩定與意識能量層級的提升。</p>
-        <br>
-        <p class="lang-cn">如果你目前正面临情绪或内在的困扰，欢迎来到这里。我会通过专业的灵摆疗愈，陪伴并协助你的身心灵恢复和谐与平衡。</p>
-        <p class="lang-tw">如果你目前正面臨情緒或內在的困擾，歡迎來到這裡。我會透過專業的靈擺療癒，陪伴並協助你的身心靈恢復和諧與平衡。</p>
+        <p class="lang-tw"><br>如果你目前正面臨情緒或內在的困擾，歡迎來到這裡。我會透過專業的靈擺療癒，陪伴並協助你的身心靈恢復和諧與平衡。</p>
     </div>
 
     <!-- About Pendulum -->
@@ -332,7 +337,7 @@
             <span class="lang-tw">🔮 服務內容</span>
         </h2>
         <h3 class="lang-cn" style="font-size: 1rem; color: var(--primary-color); margin: 10px 0;">1. 灵摆疗愈（包含 30 余项深度清理）</h3>
-        <h3 class="lang-tw" style="font-size: 1rem; color: var(--primary-color); margin: 10px 0;">1. 靈擺療愈（包含 30 餘項深度清理）</h3>
+        <h3 class="lang-tw" style="font-size: 1rem; color: var(--primary-color); margin: 10px 0;">1. 靈擺療癒（包含 30 餘項深度清理）</h3>
         <ul class="service-list">
             <li>
                 <span class="lang-cn">提升意识能量层级、减轻内心压力</span>
@@ -467,58 +472,4 @@
     <div class="modal-content">
         <h3 class="lang-cn">添加微信联系</h3>
         <h3 class="lang-tw">添加微信聯繫</h3>
-        <p style="font-size: 0.85rem; color: #666; margin-top: 5px;">
-            <span class="lang-cn">请扫描二维码或私讯沟通</span>
-            <span class="lang-tw">請掃描二維碼或私訊溝通</span>
-        </p>
-
-        <div class="qr-placeholder">
-            [ 请在此放置微信二维码 ]
-        </div>
-
-        <p>
-            <span class="lang-cn">微信号：<b>[你的微信号]</b></span>
-            <span class="lang-tw">微信號：<b>[你的微信號]</b></span>
-        </p>
-
-        <button class="btn-primary" style="margin-top: 15px; padding: 8px 20px;" onclick="closeModal()">
-            <span class="lang-cn">关闭</span>
-            <span class="lang-tw">關閉</span>
-        </button>
-    </div>
-</div>
-
-<script>
-    // 預設為簡體字，讀取儲存的狀態
-    let currentLang = localStorage.getItem('site_lang') || 'zh-CN';
-
-    window.addEventListener('DOMContentLoaded', () => {
-        if (currentLang === 'zh-TW') {
-            document.body.classList.add('tw-mode');
-            document.getElementById('langToggleBtn').innerText = '简体中文';
-        }
-    });
-
-    function toggleLanguage() {
-        if (currentLang === 'zh-CN') {
-            currentLang = 'zh-TW';
-            document.body.classList.add('tw-mode');
-            document.getElementById('langToggleBtn').innerText = '简体中文';
-        } else {
-            currentLang = 'zh-CN';
-            document.body.classList.remove('tw-mode');
-            document.getElementById('langToggleBtn').innerText = '繁體中文';
-        }
-        localStorage.setItem('site_lang', currentLang);
-    }
-
-    function openModal() {
-        document.getElementById('contactModal').style.display = 'flex';
-    }
-    function closeModal() {
-        document.getElementById('contactModal').style.display = 'none';
-    }
-</script>
-
-</body>
-</html>
+        <p style="font-size: 0.85rem; color: #666; margin-top
